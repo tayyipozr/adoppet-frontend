@@ -1,0 +1,6 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/tayyip/animal/animal/MainActivity.java
+ com.tayyip.animal.animal.MainActivity
+com/tayyip/animal/animal/BuildConfig.java
+ com.tayyip.animal.animal.BuildConfig
