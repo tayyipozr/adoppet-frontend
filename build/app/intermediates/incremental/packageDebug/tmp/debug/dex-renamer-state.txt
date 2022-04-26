@@ -1,4 +1,4 @@
-#Sat Feb 19 16:08:43 TRT 2022
-base.0=/Users/tayyip/Desktop/animal/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
-renamed.0=classes.dex
+#Fri Apr 22 01:30:53 EET 2022
+base.0=C\:\\Users\\Tayyip\\Desktop\\adoppet-frontend\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
+renamed.0=classes.dex
