@@ -1,9 +1,8 @@
 import 'dart:ui';
 import 'package:animal/constants/navigation_constants.dart';
 import 'package:animal/models/enums/page_enum.dart';
-import 'package:animal/models/user/user.dart';
-import 'package:animal/stores/auth_store.dart';
 import 'package:animal/stores/root_store.dart';
+import 'package:animal/stores/user_store.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,14 +15,13 @@ class PetDrawer extends StatefulWidget {
 
 class _PetDrawerState extends State<PetDrawer> {
   late RootStore _rootStore;
-  late AuthStore _authStore;
+  late UserStore _userStore;
 
   @override
   void didChangeDependencies() async {
     super.didChangeDependencies();
     _rootStore = Provider.of<RootStore>(context);
-    _authStore = _rootStore.authStore;
-    await _authStore.getUser();
+    _userStore = _rootStore.userStore;
   }
 
   @override
@@ -42,9 +40,9 @@ class _PetDrawerState extends State<PetDrawer> {
             Row(
               children: [
                 CircleAvatar(
-                  child: Image.network(_authStore.user!.imageUrls![0]),
+                  child: Icon(Icons.account_box_outlined),
                 ),
-                Text("Hoşgeldin ${_authStore.user!.name}"),
+                Text("Hoşgeldin ${_userStore.user != null ? _userStore.user!.firstName : "Anonim"}"),
               ],
             ),
             Divider(

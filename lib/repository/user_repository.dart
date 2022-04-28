@@ -1,19 +1,17 @@
 import 'package:animal/models/user/user.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:animal/network/apis/user_api.dart';
+import 'package:animal/repository/base_repository.dart';
 
-class UserRepository {
-  final SharedPreferences sharedPreferences;
+class UserRepository extends BaseRepository {
+  UserApi _userApi;
 
-  UserRepository({required this.sharedPreferences});
+  UserRepository(this._userApi);
 
-  User user = User(
-    id: 1,
-    age: 20,
-    name: "Tayyip",
-    surname: "ÖZER",
-    sex: false,
-    imageUrls: ["https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"],
-    favorites: [1, 4, 17, 22],
-    adopted: [3, 11, 23],
-  );
+  Future<User> getMe() async {
+    try {
+      return await _userApi.getMe();
+    } catch (err) {
+      throw err;
+    }
+  }
 }

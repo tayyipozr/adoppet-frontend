@@ -9,7 +9,7 @@ abstract class _CoreStore with Store {
   _CoreStore();
 
   @observable
-  ThemeData themeData = ThemeData.dark().copyWith();
+  ThemeData themeData = ThemeData.light();
 
   @action
   void changeTheme() {

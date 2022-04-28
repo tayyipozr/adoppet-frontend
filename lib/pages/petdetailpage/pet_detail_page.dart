@@ -17,6 +17,7 @@ class PetDetailPage extends StatefulWidget {
 class _PetDetailPageState extends State<PetDetailPage> {
   @override
   Widget build(BuildContext context) {
+    print("Detail Page: " + widget.pet.category! + widget.pet.id.toString());
     return GestureDetector(
       onVerticalDragUpdate: (DragUpdateDetails dragUpdateDetails) {
         print(dragUpdateDetails.delta.dy);
@@ -41,7 +42,7 @@ class _PetDetailPageState extends State<PetDetailPage> {
               left: 0,
               right: 0,
               child: Hero(
-                tag: widget.pet.id.toString(),
+                tag: widget.pet.category! + widget.pet.id.toString(),
                 child: Image.network(
                   widget.pet.imageUrls == null ? "  " : widget.pet.imageUrls![0],
                   fit: BoxFit.fitWidth,

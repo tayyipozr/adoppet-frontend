@@ -35,7 +35,7 @@ abstract class _PetStore with Store {
     adoptedState.finishLoading();
     return allPets.where(
       (Pet p) {
-        return _userRepository.user.adopted!.contains(p.id);
+        return true;
       },
     ).toList();
   }
@@ -48,7 +48,7 @@ abstract class _PetStore with Store {
     adoptedState.finishLoading();
     return allPets.where(
       (Pet p) {
-        return _userRepository.user.favorites!.contains(p.id);
+        return true;
       },
     ).toList();
   }

@@ -6,16 +6,17 @@ part 'user.g.dart';
 @CopyWith()
 @JsonSerializable()
 class User {
-  final int? id;
-  final String? name;
-  final String? surname;
-  final bool? sex;
-  final int? age;
-  final List<String>? imageUrls;
-  final List<int>? favorites;
-  final List<int>? adopted;
+  int id;
+  String createdAt;
+  String updatedAt;
+  String email;
+  String? firstName;
+  String? lastName;
+  bool? gender;
+  int? addressId;
 
-  User({this.id, this.name, this.surname, this.sex, this.age, this.imageUrls, this.favorites, this.adopted});
+  User(this.id, this.createdAt, this.updatedAt, this.email,
+      {this.firstName, this.lastName, this.gender, this.addressId});
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
