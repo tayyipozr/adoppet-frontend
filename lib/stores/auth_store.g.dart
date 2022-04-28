@@ -9,25 +9,25 @@ part of 'auth_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$AuthStore on _AuthStore, Store {
-  final _$userAtom = Atom(name: '_AuthStore.user');
+  final _$tokenAtom = Atom(name: '_AuthStore.token');
 
   @override
-  User? get user {
-    _$userAtom.reportRead();
-    return super.user;
+  Token? get token {
+    _$tokenAtom.reportRead();
+    return super.token;
   }
 
   @override
-  set user(User? value) {
-    _$userAtom.reportWrite(value, super.user, () {
-      super.user = value;
+  set token(Token? value) {
+    _$tokenAtom.reportWrite(value, super.token, () {
+      super.token = value;
     });
   }
 
   @override
   String toString() {
     return '''
-user: ${user}
+token: ${token}
     ''';
   }
 }

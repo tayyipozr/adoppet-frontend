@@ -54,12 +54,28 @@ mixin _$RootStore on _RootStore, Store {
     });
   }
 
+  final _$userStoreAtom = Atom(name: '_RootStore.userStore');
+
+  @override
+  UserStore get userStore {
+    _$userStoreAtom.reportRead();
+    return super.userStore;
+  }
+
+  @override
+  set userStore(UserStore value) {
+    _$userStoreAtom.reportWrite(value, super.userStore, () {
+      super.userStore = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
 coreStore: ${coreStore},
 petStore: ${petStore},
-authStore: ${authStore}
+authStore: ${authStore},
+userStore: ${userStore}
     ''';
   }
 }

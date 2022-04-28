@@ -1,5 +1,8 @@
 import 'package:animal/navigation_routes.dart';
+import 'package:animal/pages/homepage/auth/signin_page.dart';
+import 'package:animal/pages/homepage/auth/signup_page.dart';
 import 'package:animal/pages/homepage/home_page.dart';
+import 'package:animal/pages/splash_page.dart';
 import 'package:animal/stores/root_store.dart';
 import 'package:flutter/material.dart';
 import 'package:animal/injector.dart' as injector;
@@ -31,7 +34,7 @@ class _AnimalAppState extends State<AnimalApp> {
           title: 'Flutter Demo',
           theme: context.watch<RootStore>().coreStore.themeData,
           onGenerateRoute: injector.serviceLocator.get<NavigationRoute>().generateRoute,
-          home: HomePage(),
+          home: SplashPage(),
         ),
       ),
     );
