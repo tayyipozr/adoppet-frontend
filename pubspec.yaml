@@ -39,7 +39,8 @@ dependencies:
   dio: ^4.0.0
   shimmer: ^2.0.0
   loggy: ^2.0.1+1
-
+  firebase_messaging: ^11.2.15
+  firebase_core: ^1.15.0
 
 
 dev_dependencies:

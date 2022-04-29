@@ -1,4 +1,4 @@
-#Thu Apr 28 06:53:19 EET 2022
+#Fri Apr 29 03:29:51 EET 2022
 base.0=C\:\\Users\\Tayyip\\Desktop\\adoppet-frontend\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

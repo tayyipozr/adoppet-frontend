@@ -1,4 +1,5 @@
 import 'package:animal/constants/navigation_constants.dart';
+import 'package:animal/core/utils/push_notification_mixin.dart';
 import 'package:animal/pages/homepage/shimmers/pet_preview_shimmer.dart';
 import 'package:animal/pages/homepage/widgets/categories_widget.dart';
 import 'package:animal/pages/homepage/widgets/pet_preview_widget.dart';
@@ -16,7 +17,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with PushNotificationMixin {
   late RootStore _rootStore;
   late PetStore _petStore;
   late GlobalKey<ScaffoldState> _scaffoldKey;
@@ -25,6 +26,11 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     _scaffoldKey = GlobalKey<ScaffoldState>();
     super.initState();
+
+    () async {
+      Future.delayed(Duration.zero);
+      showNotificationDialog(context);
+    }();
   }
 
   @override

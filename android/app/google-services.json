@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "139727545383",
+    "project_id": "adoppet-469d5",
+    "storage_bucket": "adoppet-469d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:139727545383:android:be1de709911d17ed539a02",
+        "android_client_info": {
+          "package_name": "com.tayyip.animal.animal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "139727545383-bhi165utlr1hlqqvbaueh9e5ffmb07q5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClnhCwNTUu78q-wwll0HwmltliQwlU6mw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "139727545383-bhi165utlr1hlqqvbaueh9e5ffmb07q5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
