@@ -169,7 +169,31 @@ class _PetDetailPageState extends State<PetDetailPage> {
                     ),
                     ElevatedButton(
                       style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.grey)),
-                      onPressed: () {},
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: Card(
+                                  child: Form(
+                                      child: Column(
+                                    children: [
+                                      Text(widget.pet.name ?? ""),
+                                      TextField(
+                                        decoration: InputDecoration(
+                                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
+                                          labelText: "Health Status",
+                                        ),
+                                      ),
+                                      TextField(),
+                                      TextField(),
+                                    ],
+                                  )),
+                                ),
+                              );
+                            });
+                      },
                       child: Text("Şimdi sahiplen !"),
                     )
                   ],
