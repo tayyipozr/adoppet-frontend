@@ -27,7 +27,7 @@ class _PetDrawerState extends State<PetDrawer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black.withOpacity(0.7),
+      color: Colors.black.withOpacity(0.8),
       width: 280,
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: BackdropFilter(
@@ -37,6 +37,7 @@ class _PetDrawerState extends State<PetDrawer> {
         ),
         child: Column(
           children: [
+            SizedBox(height: 10),
             Row(
               children: [
                 CircleAvatar(
@@ -50,9 +51,11 @@ class _PetDrawerState extends State<PetDrawer> {
             ),
             ListTile(
               title: Text("Profil"),
+              onTap: () {},
             ),
             Divider(
               color: Colors.white,
+              height: 1,
             ),
             ListTile(
               title: Text("Başvurularım"),
@@ -61,6 +64,7 @@ class _PetDrawerState extends State<PetDrawer> {
             ),
             Divider(
               color: Colors.white,
+              height: 1,
             ),
             ListTile(
               title: Text("Favorilerim"),
@@ -74,6 +78,9 @@ class _PetDrawerState extends State<PetDrawer> {
               title: Text("Sahiplendiklerim"),
               onTap: () =>
                   Navigator.popAndPushNamed(context, NavigationConstants.ADOPTED_PETS, arguments: PageEnum.Adopted),
+            ),
+            Divider(
+              color: Colors.white,
             ),
             ListTile(
               title: Text("Alınan Başvurular"),

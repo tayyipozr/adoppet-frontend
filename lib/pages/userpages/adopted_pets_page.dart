@@ -416,6 +416,9 @@ class _AdoptedPetsPageState extends State<AdoptedPetsPage> with PushNotification
                                     Text("Başvurunuz reddedildi."),
                                   ],
                                 )
+                              else if (_adoptStore.applications[index].adoptionProcess!.status ==
+                                  AdoptionProcess.COMPLETE.name)
+                                Text("Sahiplendiniz !")
                               else
                                 Column(
                                   children: [

@@ -51,10 +51,10 @@ class _SigninPageState extends State<SigninPage> with HandleExceptions {
             child: Container(
               width: getSmallDiameter(context),
               height: getSmallDiameter(context),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   gradient: LinearGradient(
-                      colors: [Color(0xFFB226B2), Color(0xFFFF6DA7)],
+                      colors: [Theme.of(context).primaryColor, Colors.blue],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter)),
             ),
@@ -65,16 +65,16 @@ class _SigninPageState extends State<SigninPage> with HandleExceptions {
             child: Container(
               child: const Center(
                 child: Text(
-                  "dribblee",
-                  style: TextStyle(fontFamily: "Pacifico", fontSize: 40, color: Colors.white),
+                  "Adoppet",
+                  style: TextStyle(fontFamily: "Pacifico", fontSize: 40),
                 ),
               ),
               width: getBiglDiameter(context),
               height: getBiglDiameter(context),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   gradient: LinearGradient(
-                      colors: [Color(0xFFB226B2), Color(0xFFFF4891)],
+                      colors: [Theme.of(context).primaryColor, Colors.blue],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter)),
             ),
@@ -85,7 +85,12 @@ class _SigninPageState extends State<SigninPage> with HandleExceptions {
             child: Container(
               width: getBiglDiameter(context),
               height: getBiglDiameter(context),
-              decoration: const BoxDecoration(shape: BoxShape.circle, color: Color(0xFFF3E9EE)),
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: LinearGradient(
+                      colors: [Theme.of(context).primaryColor, Colors.blue],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter)),
             ),
           ),
           Align(
@@ -107,7 +112,6 @@ class _SigninPageState extends State<SigninPage> with HandleExceptions {
                               decoration: InputDecoration(
                                   icon: const Icon(
                                     Icons.email,
-                                    color: Color(0xFFFF4891),
                                   ),
                                   focusedBorder:
                                       UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade100)),
@@ -121,7 +125,6 @@ class _SigninPageState extends State<SigninPage> with HandleExceptions {
                               decoration: InputDecoration(
                                   icon: const Icon(
                                     Icons.vpn_key,
-                                    color: Color(0xFFFF4891),
                                   ),
                                   focusedBorder:
                                       UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade100)),
@@ -167,10 +170,10 @@ class _SigninPageState extends State<SigninPage> with HandleExceptions {
                       ),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          gradient: const LinearGradient(
-                            colors: [Color(0xFFB226B2), Color(0xFFFF4891)],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
+                          gradient: LinearGradient(
+                            colors: [Theme.of(context).primaryColor, Colors.blue],
+                            begin: Alignment.bottomRight,
+                            end: Alignment.topLeft,
                           )),
                     ),
                   ),
@@ -185,7 +188,7 @@ class _SigninPageState extends State<SigninPage> with HandleExceptions {
                     TextButton(
                       child: Text(
                         "SIGN UP",
-                        style: TextStyle(fontSize: 11, color: Color(0xFFFF4891), fontWeight: FontWeight.w700),
+                        style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700),
                       ),
                       onPressed: () async {
                         Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignupPage()));

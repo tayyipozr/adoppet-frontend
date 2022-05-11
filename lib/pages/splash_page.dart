@@ -25,7 +25,7 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
 
     () async {
-      await Future.delayed(Duration.zero);
+      await Future.delayed(Duration(seconds: 1));
       await _redirect();
     }();
   }
@@ -56,7 +56,13 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text("Splash Page"),
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/splash.png'),
+            ),
+          ),
+        ),
       ),
     );
   }
