@@ -15,6 +15,12 @@ class PushNotificationService extends IPushNotificationService {
     injector.serviceLocator.get<Loggy>().debug("PushNotificationToken: $token");
   }
 
+  Future<String?> getToken() async {
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+    token = await messaging.getToken();
+    return token;
+  }
+
   Future<void> requestPermisson() async {
     NotificationSettings settings = await FirebaseMessaging.instance.requestPermission(
       alert: true,

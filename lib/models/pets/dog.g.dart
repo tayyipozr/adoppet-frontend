@@ -9,24 +9,24 @@ part of 'dog.dart';
 extension DogCopyWith on Dog {
   Dog copyWith({
     int? age,
-    String? category,
-    String? color,
+    String? description,
+    int? genderId,
     double? height,
     int? id,
-    List<String>? imageUrls,
+    List<ImageUrls>? imageUrls,
     String? name,
-    bool? sex,
+    int? typeId,
     double? weight,
   }) {
     return Dog(
       age: age ?? this.age,
-      category: category ?? this.category,
-      color: color ?? this.color,
+      description: description ?? this.description,
+      genderId: genderId ?? this.genderId,
       height: height ?? this.height,
       id: id ?? this.id,
       imageUrls: imageUrls ?? this.imageUrls,
       name: name ?? this.name,
-      sex: sex ?? this.sex,
+      typeId: typeId ?? this.typeId,
       weight: weight ?? this.weight,
     );
   }
@@ -40,25 +40,26 @@ Dog _$DogFromJson(Map<String, dynamic> json) {
   return Dog(
     id: json['id'] as int?,
     name: json['name'] as String?,
-    color: json['color'] as String?,
-    sex: json['sex'] as bool?,
+    description: json['description'] as String?,
+    genderId: json['genderId'] as int?,
     age: json['age'] as int?,
     height: (json['height'] as num?)?.toDouble(),
     weight: (json['weight'] as num?)?.toDouble(),
-    imageUrls:
-        (json['imageUrls'] as List<dynamic>?)?.map((e) => e as String).toList(),
-    category: json['category'] as String?,
+    imageUrls: (json['imageUrls'] as List<dynamic>?)
+        ?.map((e) => ImageUrls.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    typeId: json['typeId'] as int?,
   );
 }
 
 Map<String, dynamic> _$DogToJson(Dog instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
-      'color': instance.color,
-      'sex': instance.sex,
+      'description': instance.description,
+      'genderId': instance.genderId,
       'age': instance.age,
       'height': instance.height,
       'weight': instance.weight,
       'imageUrls': instance.imageUrls,
-      'category': instance.category,
+      'typeId': instance.typeId,
     };

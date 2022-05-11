@@ -3,6 +3,7 @@ import 'package:animal/core/utils/push_notification_mixin.dart';
 import 'package:animal/pages/homepage/shimmers/pet_preview_shimmer.dart';
 import 'package:animal/pages/homepage/widgets/categories_widget.dart';
 import 'package:animal/pages/homepage/widgets/pet_preview_widget.dart';
+import 'package:animal/stores/blockchain_store.dart';
 import 'package:animal/stores/pet_store.dart';
 import 'package:animal/stores/root_store.dart';
 import 'package:animal/widgets/pet_drawer.dart';
@@ -20,6 +21,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with PushNotificationMixin {
   late RootStore _rootStore;
   late PetStore _petStore;
+  late BlockchainStore _blockchainStore;
   late GlobalKey<ScaffoldState> _scaffoldKey;
 
   @override
@@ -28,8 +30,8 @@ class _HomePageState extends State<HomePage> with PushNotificationMixin {
     super.initState();
 
     () async {
-      Future.delayed(Duration.zero);
-      showNotificationDialog(context);
+      await Future.delayed(Duration.zero);
+      showNotificationDialog(context, _blockchainStore);
     }();
   }
 
@@ -37,6 +39,7 @@ class _HomePageState extends State<HomePage> with PushNotificationMixin {
   void didChangeDependencies() async {
     super.didChangeDependencies();
     _rootStore = Provider.of<RootStore>(context);
+    _blockchainStore = _rootStore.blockchainStore;
     _petStore = _rootStore.petStore;
     await _petStore.get();
   }

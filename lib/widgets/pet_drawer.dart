@@ -56,6 +56,8 @@ class _PetDrawerState extends State<PetDrawer> {
             ),
             ListTile(
               title: Text("Başvurularım"),
+              onTap: () => Navigator.popAndPushNamed(context, NavigationConstants.ADOPTED_PETS,
+                  arguments: PageEnum.Applications),
             ),
             Divider(
               color: Colors.white,
@@ -72,6 +74,11 @@ class _PetDrawerState extends State<PetDrawer> {
               title: Text("Sahiplendiklerim"),
               onTap: () =>
                   Navigator.popAndPushNamed(context, NavigationConstants.ADOPTED_PETS, arguments: PageEnum.Adopted),
+            ),
+            ListTile(
+              title: Text("Alınan Başvurular"),
+              onTap: () =>
+                  Navigator.popAndPushNamed(context, NavigationConstants.ADOPTED_PETS, arguments: PageEnum.Requests),
             ),
           ],
         ),

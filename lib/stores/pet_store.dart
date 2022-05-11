@@ -27,6 +27,7 @@ abstract class _PetStore with Store {
   @observable
   List<Pet> allPets = [];
 
+  /*
   @action
   Future<List<Pet>> getAdopted() async {
     adoptedState.state = LoadingState.initial;
@@ -52,6 +53,7 @@ abstract class _PetStore with Store {
       },
     ).toList();
   }
+  */
 
   @action
   Future<void> get() async {

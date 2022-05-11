@@ -24,4 +24,21 @@ class Endpoints {
   static const user = '/users';
 
   static const me = user + '/me';
+
+  // Pet
+  static const pets = '/pets';
+
+  static const types = '/types';
+
+  // Notification
+  static const notifications = '/notifications';
+
+  // Adopt
+  static const adopts = '/adopts';
+
+  static const applications = adopts + '/applications';
+
+  // Blockchain
+
+  static const blockchain = '/blockchain';
 }

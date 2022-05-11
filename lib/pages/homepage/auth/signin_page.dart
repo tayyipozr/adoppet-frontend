@@ -2,6 +2,7 @@ import 'package:animal/core/utils/exception_handling_widget_mixin.dart';
 import 'package:animal/models/auth/auth.dart';
 import 'package:animal/pages/homepage/auth/signup_page.dart';
 import 'package:animal/pages/homepage/home_page.dart';
+import 'package:animal/pages/splash_page.dart';
 import 'package:animal/stores/auth_store.dart';
 import 'package:animal/stores/root_store.dart';
 import 'package:flutter/material.dart';
@@ -93,7 +94,6 @@ class _SigninPageState extends State<SigninPage> with HandleExceptions {
               children: <Widget>[
                 Container(
                   decoration: BoxDecoration(
-                      color: Colors.white,
                       //border: Border.all(color: Colors.grey),
                       borderRadius: BorderRadius.circular(10)),
                   margin: const EdgeInsets.fromLTRB(20, 300, 20, 10),
@@ -155,7 +155,7 @@ class _SigninPageState extends State<SigninPage> with HandleExceptions {
                               showErrorMessage(context, _authStore.signinState.errorMessage);
                               return;
                             }
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage()));
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => SplashPage()));
                           },
                           child: const Center(
                             child: Text(

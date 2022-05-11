@@ -1,0 +1,8 @@
+enum AdoptionProcess {
+  NONE,
+  STARTED,
+  MESSAGING,
+  CONFIRMATION,
+  COMPLETE,
+  REJECTED,
+}
