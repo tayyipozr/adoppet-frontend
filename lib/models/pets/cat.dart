@@ -1,3 +1,4 @@
+import 'package:animal/models/pets/image_urls.dart';
 import 'package:animal/models/pets/pet.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -10,23 +11,23 @@ class Cat extends Pet {
   Cat({
     int? id,
     String? name,
-    String? color,
-    bool? sex,
+    String? description,
+    int? genderId,
     int? age,
     double? height,
     double? weight,
-    List<String>? imageUrls,
-    String? category,
+    List<ImageUrls>? imageUrls,
+    int? typeId,
   }) : super(
           id: id,
           name: name,
           age: age,
-          category: category,
-          color: color,
+          typeId: typeId,
           height: height,
           imageUrls: imageUrls,
-          sex: sex,
+          genderId: genderId,
           weight: weight,
+          description: description,
         );
   factory Cat.fromJson(Map<String, dynamic> json) => _$CatFromJson(json);
 

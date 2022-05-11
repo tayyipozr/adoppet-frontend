@@ -54,20 +54,6 @@ mixin _$PetStore on _PetStore, Store {
     });
   }
 
-  final _$getAdoptedAsyncAction = AsyncAction('_PetStore.getAdopted');
-
-  @override
-  Future<List<Pet>> getAdopted() {
-    return _$getAdoptedAsyncAction.run(() => super.getAdopted());
-  }
-
-  final _$getFavoritesAsyncAction = AsyncAction('_PetStore.getFavorites');
-
-  @override
-  Future<List<Pet>> getFavorites() {
-    return _$getFavoritesAsyncAction.run(() => super.getFavorites());
-  }
-
   final _$getAsyncAction = AsyncAction('_PetStore.get');
 
   @override

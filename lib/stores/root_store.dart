@@ -1,5 +1,8 @@
+import 'package:animal/stores/adopt_store.dart';
 import 'package:animal/stores/auth_store.dart';
+import 'package:animal/stores/blockchain_store.dart';
 import 'package:animal/stores/core_store.dart';
+import 'package:animal/stores/notification_store.dart';
 import 'package:animal/stores/pet_store.dart';
 import 'package:animal/stores/user_store.dart';
 import 'package:mobx/mobx.dart';
@@ -14,6 +17,9 @@ abstract class _RootStore with Store {
     required this.coreStore,
     required this.userStore,
     required this.petStore,
+    required this.notificationStore,
+    required this.adoptStore,
+    required this.blockchainStore,
   });
 
   @observable
@@ -27,4 +33,13 @@ abstract class _RootStore with Store {
 
   @observable
   late UserStore userStore;
+
+  @observable
+  late NotificationStore notificationStore;
+
+  @observable
+  late AdoptStore adoptStore;
+
+  @observable
+  late BlockchainStore blockchainStore;
 }

@@ -1,6 +1,9 @@
 import 'package:animal/core/extensions/context_extensions.dart';
 import 'package:animal/models/pets/pet.dart';
+import 'package:animal/stores/adopt_store.dart';
+import 'package:animal/stores/root_store.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class PetDetailPage extends StatefulWidget {
   final Pet pet;
@@ -15,9 +18,26 @@ class PetDetailPage extends StatefulWidget {
 }
 
 class _PetDetailPageState extends State<PetDetailPage> {
+  late AdoptStore _adoptStore;
+
+  @override
+  void initState() {
+    super.initState();
+    () async {
+      await Future.delayed(Duration.zero);
+    }();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    RootStore rootStore = Provider.of<RootStore>(context);
+    _adoptStore = rootStore.adoptStore;
+  }
+
   @override
   Widget build(BuildContext context) {
-    print("Detail Page: " + widget.pet.category! + widget.pet.id.toString());
+    print("Detail Page: " + widget.pet.typeId.toString() + widget.pet.id.toString());
     return GestureDetector(
       onVerticalDragUpdate: (DragUpdateDetails dragUpdateDetails) {
         print(dragUpdateDetails.delta.dy);
@@ -42,9 +62,14 @@ class _PetDetailPageState extends State<PetDetailPage> {
               left: 0,
               right: 0,
               child: Hero(
-                tag: widget.pet.category! + widget.pet.id.toString(),
+                tag: widget.pet.typeId.toString() + widget.pet.id.toString(),
                 child: Image.network(
-                  widget.pet.imageUrls == null ? "  " : widget.pet.imageUrls![0],
+                  widget.pet.imageUrls == null
+                      ? [
+                          "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=688&q=80",
+                          "https://images.unsplash.com/photo-1501820488136-72669149e0d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+                        ][widget.pet.typeId! - 1]
+                      : widget.pet.imageUrls![0].url!,
                   fit: BoxFit.fitWidth,
                 ),
               ),
@@ -106,7 +131,7 @@ class _PetDetailPageState extends State<PetDetailPage> {
                                 children: [
                                   Image.network("https://cdn-icons-png.flaticon.com/512/594/594037.png"),
                                   Text(
-                                    widget.pet.sex! ? "Erkek" : "Dişi",
+                                    widget.pet.genderId == 1 ? "Erkek" : "Dişi",
                                     style: TextStyle(color: Colors.black, fontSize: 20),
                                   ),
                                 ],
@@ -157,7 +182,7 @@ class _PetDetailPageState extends State<PetDetailPage> {
                                 children: [
                                   Image.network("https://cdn-icons-png.flaticon.com/512/2206/2206009.png"),
                                   Text(
-                                    widget.pet.color.toString(),
+                                    'Color',
                                     style: TextStyle(color: Colors.black, fontSize: 20),
                                   ),
                                 ],
@@ -169,31 +194,29 @@ class _PetDetailPageState extends State<PetDetailPage> {
                     ),
                     ElevatedButton(
                       style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.grey)),
-                      onPressed: () {
-                        showDialog(
-                            context: context,
-                            builder: (context) {
-                              return Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Card(
-                                  child: Form(
-                                      child: Column(
-                                    children: [
-                                      Text(widget.pet.name ?? ""),
-                                      TextField(
-                                        decoration: InputDecoration(
-                                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
-                                          labelText: "Health Status",
-                                        ),
-                                      ),
-                                      TextField(),
-                                      TextField(),
-                                    ],
-                                  )),
-                                ),
-                              );
-                            });
-                      },
+                      onPressed: _adoptStore.adoptState.isLoading
+                          ? null
+                          : () async {
+                              final bool = await _adoptStore.adopt(widget.pet.id!);
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: Text(bool ? "Tebrikler !" : "Bir hata oluştu !"),
+                                      content: Text(bool
+                                          ? "${widget.pet.name} adlı dostumuz için evlat edinme sürecini başlattınız."
+                                          : "Lütfen tekrar denetin !"),
+                                      actions: [
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text("Tamam"),
+                                        )
+                                      ],
+                                    );
+                                  });
+                            },
                       child: Text("Şimdi sahiplen !"),
                     )
                   ],
