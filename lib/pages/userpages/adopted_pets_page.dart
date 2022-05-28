@@ -7,6 +7,7 @@ import 'package:animal/models/enums/page_enum.dart';
 import 'package:animal/stores/adopt_store.dart';
 import 'package:animal/stores/blockchain_store.dart';
 import 'package:animal/stores/notification_store.dart';
+import 'package:animal/stores/pet_store.dart';
 import 'package:animal/stores/root_store.dart';
 import 'package:animal/stores/state_store.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,7 @@ class _AdoptedPetsPageState extends State<AdoptedPetsPage> with PushNotification
   late AdoptStore _adoptStore;
   late NotificationStore _notificationStore;
   late BlockchainStore _blockchainStore;
+  late PetStore _petStore;
 
   TextEditingController _healthController = TextEditingController();
 
@@ -65,6 +67,7 @@ class _AdoptedPetsPageState extends State<AdoptedPetsPage> with PushNotification
     _adoptStore = _rootStore.adoptStore;
     _notificationStore = _rootStore.notificationStore;
     _blockchainStore = _rootStore.blockchainStore;
+    _petStore = _rootStore.petStore;
     /*
     if (PageEnum.Adopted == widget._pageEnum) {
       _pets = await _petStore.getAdopted();
@@ -134,12 +137,12 @@ class _AdoptedPetsPageState extends State<AdoptedPetsPage> with PushNotification
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(15.0),
                             child: Image.network(
-                              _adoptStore.adoptionRequests[index].pet!.imageUrls == null
+                              _adoptStore.adoptionRequests[index].url == null
                                   ? [
                                       "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=688&q=80",
                                       "https://images.unsplash.com/photo-1501820488136-72669149e0d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
                                     ][_adoptStore.adoptionRequests[index].pet!.typeId! - 1]
-                                  : _adoptStore.adoptionRequests[index].pet!.imageUrls![0].url!,
+                                  : _adoptStore.adoptionRequests[index].url!,
                               fit: BoxFit.fitWidth,
                             ),
                           ),
@@ -260,12 +263,12 @@ class _AdoptedPetsPageState extends State<AdoptedPetsPage> with PushNotification
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(15.0),
                             child: Image.network(
-                              _adoptStore.applications[index].pet!.imageUrls == null
+                              _adoptStore.applications[index].url == null
                                   ? [
                                       "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=688&q=80",
                                       "https://images.unsplash.com/photo-1501820488136-72669149e0d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
                                     ][_adoptStore.applications[index].pet!.typeId! - 1]
-                                  : _adoptStore.applications[index].pet!.imageUrls![0].url!,
+                                  : _adoptStore.applications[index].url!,
                               fit: BoxFit.cover,
                             ),
                           ),

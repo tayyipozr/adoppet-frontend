@@ -15,6 +15,7 @@ extension AdoptionCopyWith on Adoption {
     Pet? pet,
     int? petId,
     String? updatedAt,
+    String? url,
     User? user,
     int? userId,
   }) {
@@ -26,6 +27,7 @@ extension AdoptionCopyWith on Adoption {
       pet: pet ?? this.pet,
       petId: petId ?? this.petId,
       updatedAt: updatedAt ?? this.updatedAt,
+      url: url ?? this.url,
       user: user ?? this.user,
       userId: userId ?? this.userId,
     );
@@ -54,6 +56,7 @@ Adoption _$AdoptionFromJson(Map<String, dynamic> json) {
         ? null
         : AdoptionProcess.fromJson(
             json['adoptionProcess'] as Map<String, dynamic>),
+    url: json['url'] as String?,
   );
 }
 
@@ -67,4 +70,5 @@ Map<String, dynamic> _$AdoptionToJson(Adoption instance) => <String, dynamic>{
       'pet': instance.pet,
       'user': instance.user,
       'adoptionProcess': instance.adoptionProcess,
+      'url': instance.url,
     };

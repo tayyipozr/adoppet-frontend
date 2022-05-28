@@ -59,6 +59,8 @@ class AdoptApi extends BaseApi {
 
       var adoptionsRequests = response.data.map<Adoption>((adopt) => Adoption.fromJson(adopt)).toList();
 
+      print(adoptionsRequests);
+
       return adoptionsRequests;
     } catch (err) {
       throw err;
